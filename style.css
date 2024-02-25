@@ -1,0 +1,32 @@
+
+body {
+    width: 600px;
+    background-color: #b8dcff;
+    color: hsl(40, 84%, 50%);
+    font-family: 'IM Fell Double Pica SC';
+}
+
+#controlpanel{
+    margin-top: 30px;
+}
+
+.control {
+    color: #998877;
+    width: 160px;
+    font-size: 150%;
+}
+
+.gameboard {
+    background-color: #b8dcff;
+    width: 400px;
+    font-size: 400%;
+    font-style: bold;
+}
+
+.gamepanel {
+    width: 100px;
+    height: 100px;
+    background-color: #222222;
+    text-align: center;
+    border-radius: 10px;
+}
