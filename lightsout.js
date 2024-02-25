@@ -4,13 +4,14 @@ $(document).ready(function() {
     var counter = 0;
     var explainer_shade = 200;
 
-    var inactive_bg = '#411111';
-    var inactive_fg = '#553300';
-    var active_bg = '#EE2222';
-    var active_fg = '#DDDD33';
+    // TODO: Swap "active" and "inactive" nomenclature.
+    var active_bg = '#411111';
+    var active_fg = '#553300';
+    var inactive_bg = '#EEBB22';
+    var inactive_fg = '#DDDD33';
 
     var prettyPrintCounter = function() {
-        return counter.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",").concat(" years");
+        return counter.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",").concat(" moves");
     }
 
     var set_colors = function() {
@@ -58,7 +59,7 @@ $(document).ready(function() {
     set_colors();
 
     $(".gamepanel").click(function() {
-        counter = counter + 707
+        counter = counter + 1
     })
 
     $("#reset").click(function() {
