@@ -4,14 +4,17 @@ Use main() to breadth-first-search for all states from which you can
 eventually reach lights-out.  Just supply the board width (boards are square)
 as the first argument. For a 4x4 grid:
 
-  $  python3 lightsout.py 4
+  $  python3 lightsout.py 4 lightsout_sqlite.db
 
-You're not going to believe this, but it has trouble even with exploring 5x5,
-which is to say, a state space of 32 million values.
+The states from which lights-out is reachable, and their next move to make,
+are saved in a table called "lightsout_states".  See `save_reachable_states`.
+  
+Takes about 15 minutes for a 5x5 grid. I'm not fool enough to try 6x6.
 """
 
 import collections
 import dataclasses
+import sqlite3
 import sys
 
 
@@ -74,8 +77,33 @@ class NextMove:
     prev: int
 
 
+def save_reachable_states(size: int, parents: dict[int, 'NextMove'], outpath: str):
+    conn = sqlite3.connect(outpath)
+    curr = conn.cursor()
+    curr.execute("""
+        CREATE TABLE IF NOT EXISTS lightsout_states (
+            size INTEGER,
+            state INTEGER,
+            row INTEGER,
+            col INTEGER,
+            to_go INTEGER,
+            destination_state INTEGER        
+        );
+    """)
+    tuples = [tuple([size, state, nm.row, nm.col, nm.to_go, nm.prev])
+              for state, nm in parents.items()]
+    curr.executemany("""
+        INSERT INTO lightsout_states
+            (size, state, row, col, to_go, destination_state)
+        VALUES (?, ?, ?, ?, ?, ?);
+    """, tuples)
+    conn.commit()
+    conn.close()
+
+
 def main():
     size = int(sys.argv[1])
+    outpath = sys.argv[2]
     game = LightsOut(size)
 
     # Map [state] -> [move]
@@ -89,7 +117,9 @@ def main():
     while candidates:
         if len(parents) > next_trigger:
             next_trigger *= 2
-            print(f"   ... found {len(parents)} states so far...")
+            print(
+                f"   ... found {len(parents)} states so far; "
+                f"{len(candidates)} live candidates...")
         v = candidates.popleft()
         for r in range(size):
             for c in range(size):
@@ -102,6 +132,7 @@ def main():
     print(f'{len(parents)} states reached, of {2 ** (size * size)} total.')
     max_depth = max(nm.to_go for nm in parents.values())
     print(f'Max depth: {max_depth}')
+    save_reachable_states(size, parents, outpath)
 
 
 if __name__ == "__main__":
