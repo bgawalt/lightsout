@@ -1,6 +1,18 @@
-"""Represent game state for Lights Out."""
+"""Represent and explore game states for Lights Out.
 
+Use main() to breadth-first-search for all states from which you can
+eventually reach lights-out.  Just supply the board width (boards are square)
+as the first argument. For a 4x4 grid:
+
+  $  python3 lightsout.py 4
+
+You're not going to believe this, but it has trouble even with exploring 5x5,
+which is to say, a state space of 32 million values.
+"""
+
+import collections
 import dataclasses
+import sys
 
 
 @dataclasses.dataclass(frozen=True)
@@ -52,4 +64,45 @@ class LightsOut:
                 continue
             mask += 2 ** (self.size * n_row + n_col)
         return dataclasses.replace(self, state=(self.state ^ mask))
-        
+
+
+@dataclasses.dataclass(frozen=True)
+class NextMove:
+    row: int
+    col: int
+    to_go: int
+    prev: int
+
+
+def main():
+    size = int(sys.argv[1])
+    game = LightsOut(size)
+
+    # Map [state] -> [move]
+    parents = {game.state: NextMove(-1, -1, 0, -1)}
+    depths = {game: 0}
+    # The last state seen
+    prev = -1
+    # Initialize queue with the lights-out state:
+    candidates = collections.deque([game,])
+    next_trigger = 2
+    while candidates:
+        if len(parents) > next_trigger:
+            next_trigger *= 2
+            print(f"   ... found {len(parents)} states so far...")
+        v = candidates.popleft()
+        for r in range(size):
+            for c in range(size):
+                w = v.toggle(r, c)
+                if w.state in parents:
+                    continue
+                depths[w] = depths[v] + 1
+                parents[w.state] = NextMove(r, c, depths[v] + 1, v.state)
+                candidates.append(w)
+    print(f'{len(parents)} states reached, of {2 ** (size * size)} total.')
+    max_depth = max(nm.to_go for nm in parents.values())
+    print(f'Max depth: {max_depth}')
+
+
+if __name__ == "__main__":
+    main()
