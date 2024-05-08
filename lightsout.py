@@ -7,7 +7,8 @@ as the first argument. For a 4x4 grid:
   $  python3 lightsout.py 4 lightsout_sqlite.db
 
 The states from which lights-out is reachable, and their next move to make,
-are saved in a table called "lightsout_states".  See `save_reachable_states`.
+are saved in a table called "lightsout_states".  See `save_reachable_states`
+and the README for more details.
   
 Takes about 15 minutes for a 5x5 grid. I'm not fool enough to try 6x6.
 """
@@ -26,7 +27,8 @@ class LightsOut:
         size: The height/width of the square board.
         state: An integer, used as a bitmask, where each bit represents an
             element in the binary matrix of "which lights are on." Uses a
-            row-major format; the first `size` bits are the first row of lights.
+            row-major format; the least-significant `size` bits are the first
+            row of lights; the next least `size` bits are the second row, etc.
     """
     size: int
     state: int = 0
