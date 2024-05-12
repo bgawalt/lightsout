@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    var lights = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    var lights = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     var game_won = false;
     var counter = 0;
     var explainer_shade = 200;
@@ -32,7 +32,7 @@ $(document).ready(function() {
     }
 
     var toggle = function(row, col) {
-        if (row >= 0 && row < 3 && col >= 0 && col < 4) {
+        if (row >= 0 && row < 4 && col >= 0 && col < 4) {
             var idx = 4*row + col;
             lights[idx] = 1 - lights[idx];
         }
@@ -64,8 +64,9 @@ $(document).ready(function() {
 
     $("#reset").click(function() {
         counter = 0;
-        lights = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        lights = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         game_won = false;
+        $("#win_msg").html("Tap to toggle until all lights are out.")
         set_colors();
     })
 
@@ -153,6 +154,36 @@ $(document).ready(function() {
     $("#23").click(function() {
         if (game_won === false) {
             toggle_neighbors(2, 3);
+            set_colors();
+            check_if_won();
+        }
+    })
+
+
+    $("#30").click(function() {
+        if (game_won === false) {
+            toggle_neighbors(3, 0);
+            set_colors();
+            check_if_won();
+        }
+    })
+    $("#31").click(function() {
+        if (game_won === false) {
+            toggle_neighbors(3, 1);
+            set_colors();
+            check_if_won();
+        }
+    })
+    $("#32").click(function() {
+        if (game_won === false) {
+            toggle_neighbors(3, 2);
+            set_colors();
+            check_if_won();
+        }
+    })
+    $("#33").click(function() {
+        if (game_won === false) {
+            toggle_neighbors(3, 3);
             set_colors();
             check_if_won();
         }

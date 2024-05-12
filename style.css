@@ -1,8 +1,11 @@
 
 body {
-    width: 600px;
+    width: 100%;
+    max-width: 660px;
+    margin: auto;
     background-color: #b8dcff;
     color: #998877;
+    font-size: 36pt;
 }
 
 table {
@@ -14,8 +17,8 @@ table {
 }
 
 .control {
-    width: 160px;
-    font-size: 150%;
+    width: 40%;
+    font-size: 36pt;
 }
 
 #reset {
@@ -28,14 +31,14 @@ table {
 
 .gameboard {
     background-color: #b8dcff;
-    width: 400px;
-    font-size: 400%;
+    width: 95%;
+    aspect-ratio: 1.0;
     font-style: bold;
 }
 
 .gamepanel {
-    width: 100px;
-    height: 100px;
+    max-width: 200px;
+    aspect-ratio: 1.0;     
     background-color: #222222;
     text-align: center;
     border-radius: 10px;
