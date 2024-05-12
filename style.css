@@ -6,6 +6,10 @@ body {
     font-family: 'IM Fell Double Pica SC';
 }
 
+table {
+    margin: auto
+}
+
 #controlpanel{
     margin-top: 30px;
 }
