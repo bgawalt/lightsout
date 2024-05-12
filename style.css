@@ -2,8 +2,7 @@
 body {
     width: 600px;
     background-color: #b8dcff;
-    color: hsl(40, 84%, 50%);
-    font-family: 'IM Fell Double Pica SC';
+    color: #998877;
 }
 
 table {
@@ -15,7 +14,6 @@ table {
 }
 
 .control {
-    color: #998877;
     width: 160px;
     font-size: 150%;
 }
@@ -41,4 +39,8 @@ table {
     background-color: #222222;
     text-align: center;
     border-radius: 10px;
+}
+
+#win_msg {
+    text-align: center;
 }
