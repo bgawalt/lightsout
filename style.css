@@ -20,6 +20,14 @@ table {
     font-size: 150%;
 }
 
+#reset {
+    text-align: left;
+}
+
+#count {
+    text-align: right;
+}
+
 .gameboard {
     background-color: #b8dcff;
     width: 400px;
