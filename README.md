@@ -103,7 +103,8 @@ Fun facts:
 ### Solution from "all lights on": `lightsout_path`
 
 You can print out a step-by-step path from all-on to lights-out with
-`lightsout_path.py`:
+`lightsout_path.py`, in format `current_state: (row to click, col to click)`,
+where rows and columns are zero-indexed:
 
 ```shell
 $ python3 lightsout_path.py lightsout_states.db 4
