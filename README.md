@@ -1,12 +1,18 @@
 # Lights Out
 
+Here's a simple puzzle game my kids like to play on my phone. You try and get
+all the lights to go out.
+
+Play the [4x4 grid here](https://gawalt.com/lightsout/4x4.html) and the *much
+harder* [5x5 grid here](https://gawalt.com/lightsout/5x5.html).
+
 Here's me teaching myself the basics of the HTML, CSS, JavaScript
 trinity, using jQuery as the DOM modifier.
 
 I started this a looong time ago, in Feb 2015, but never really got
-into appropriate shape for public consumption.
+into appropriate shape for public consumption. But now it is!
 
-## The game: `index.html`, `style.css`, & `lightsout.js`
+## The game: `4x4.html`, `5x5.html`, `style.css`, & `lightsout.js`
 
 ### Rules
 
@@ -17,25 +23,18 @@ south, east, or west of it. Puzzling!
 
 ### Implementation
 
-The game itself is playable by just loading `index.html` in your browser. Its
-dependencies are all here, locally: `style.css`, `lightsout.js`, and a copy of
-jQuery 1.11.2.
-
-I haven't meaningfully updated since I first put it together in 2015 (my
-first actual work using the HTML+CSS+JS webdev suite). So it's not very pretty.
-The grid size is hard-coded, at 3x4, and I haven't looked *at all* to see what
-modifying that would look like.
+The game itself is playable by just loading `4x4.html` or `5x5.html` in your
+browser. Its dependencies are all here, locally: `style.css`, `lightsout.js`,
+and a copy of jQuery 1.11.2.
 
 ### TODO
 
-*  (Bug!) Clicking RESET after a win doesn't reset the YOU WIN message.
-*  Build out 3x3, 4x4, and 5x5 grids
+*  Explain the rules and just generally spruce up `index.html`
 *  Allow for starting from random initial states (from which it's possible to
    win!)
 *  Build a HINT button that tells you what light will take you closer to
    lights-out
-*  Check out how it all looks/works on mobile, esp. tablet screens
-*  Serve from [gawalt.com](https://brian.gawalt.com)
+*  Figure out why WebKit hates this and won't render a square grid
 
 
 ## The solver: `lightsout.py`
