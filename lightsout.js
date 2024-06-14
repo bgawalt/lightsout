@@ -1,5 +1,17 @@
 $(document).ready(function() {
-    var lights = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    console.log("its a me, mario")
+    var n = -1;  // Grid width/height
+    var lights = [];
+    var setup = function() {
+        $("#gameboard").find(".gamepanel").each(function() {
+            lights.push(0)
+            while (lights.length > (n * n)) {
+                n++;
+            }
+        });
+    }
+    setup();
+
     var game_won = false;
     var counter = 0;
     var explainer_shade = 200;
@@ -17,8 +29,8 @@ $(document).ready(function() {
     var set_colors = function() {
         $("#count").html(prettyPrintCounter)
         for (a = 0; a < lights.length; a++) {
-            col = a % 4;
-            row = (a - col) / 4;
+            col = a % n;
+            row = (a - col) / n;
             cell = "#"+row.toString()+col.toString();
             if (lights[a] === 0) {
                 $(cell).css('background-color', inactive_bg)
@@ -32,8 +44,8 @@ $(document).ready(function() {
     }
 
     var toggle = function(row, col) {
-        if (row >= 0 && row < 4 && col >= 0 && col < 4) {
-            var idx = 4*row + col;
+        if (row >= 0 && row < n && col >= 0 && col < n) {
+            var idx = n*row + col;
             lights[idx] = 1 - lights[idx];
         }
     }
@@ -70,7 +82,7 @@ $(document).ready(function() {
 
     $("#reset").click(function() {
         counter = 0;
-        lights = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        for (i = 0; i < lights.length; i++) { lights[i] = 0; }
         game_won = false;
         $("#win_msg").html("Tap to toggle until all lights are out.")
         set_colors();
