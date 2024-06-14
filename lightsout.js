@@ -14,9 +14,7 @@ $(document).ready(function() {
 
     var game_won = false;
     var counter = 0;
-    var explainer_shade = 200;
 
-    // TODO: Swap "active" and "inactive" nomenclature.
     const inactive_bg = '#411111';
     const inactive_fg = '#553300';
     const active_bg = '#EEBB22';
