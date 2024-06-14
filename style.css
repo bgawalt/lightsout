@@ -1,7 +1,7 @@
 
 body {
     width: 100%;
-    max-width: 660px;
+    max-width: 760px;
     margin: auto;
     background-color: #b8dcff;
     color: #998877;
@@ -32,16 +32,16 @@ table {
 #gameboard {
     background-color: #b8dcff;
     width: 95%;
-    aspect-ratio: 1.0;
+    aspect-ratio: 1 / 1;
     font-style: bold;
 }
 
 .gamepanel {
     max-width: 200px;
-    aspect-ratio: 1.0;     
+    aspect-ratio: 1 / 1;     
     background-color: #222222;
     text-align: center;
-    border-radius: 10px;
+    border-radius: 15%;
 }
 
 #win_msg {
