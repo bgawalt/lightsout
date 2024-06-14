@@ -100,6 +100,46 @@ Fun facts:
     to say it looks like a checkerboard where the corner and center lights are
     on and the "side" lights are off.
 
+### Solution from "all lights on": `lightsout_path`
+
+You can print out a step-by-step path from all-on to lights-out with
+`lightsout_path.py`:
+
+```shell
+$ python3 lightsout_path.py lightsout_states.db 4
+3 x 3 solution:
+        1ff: (2, 2)
+        5f: (2, 0)
+        97: (1, 1)
+        2d: (0, 2)
+        b: (0, 0)
+
+4 x 4 solution:
+        ffff: (3, 2)
+        1bff: (2, 0)
+        8ef: (1, 3)
+        27: (0, 1)
+
+5 x 5 solution:
+        1ffffff: (4, 4)
+        77ffff: (4, 2)
+        95ffff: (4, 1)
+        e4ffff: (3, 3)
+        6adfff: (3, 2)
+        2dcfff: (3, 1)
+        e47ff: (2, 4)
+        625ff: (2, 3)
+        254ff: (2, 2)
+        6c7f: (1, 4)
+        2f6f: (1, 3)
+        ce7: (1, 1)
+        405: (1, 0)
+        64: (0, 1)
+        23: (0, 0)
+```
+
+Light-toggles commute, so you can do the steps in those paths in any order.
+
 ### TODO
 
 *  The SQLite file winds up being surprisingly large: 202 MB. And `gzip --best`
