@@ -29,7 +29,7 @@ table {
     text-align: right;
 }
 
-.gameboard {
+#gameboard {
     background-color: #b8dcff;
     width: 95%;
     aspect-ratio: 1.0;
