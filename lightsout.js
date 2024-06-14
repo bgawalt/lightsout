@@ -17,10 +17,10 @@ $(document).ready(function() {
     var explainer_shade = 200;
 
     // TODO: Swap "active" and "inactive" nomenclature.
-    var active_bg = '#411111';
-    var active_fg = '#553300';
-    var inactive_bg = '#EEBB22';
-    var inactive_fg = '#DDDD33';
+    const inactive_bg = '#411111';
+    const inactive_fg = '#553300';
+    const active_bg = '#EEBB22';
+    const active_fg = '#DDDD33';
 
     var prettyPrintCounter = function() {
         return counter.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",").concat(" moves");
@@ -33,11 +33,11 @@ $(document).ready(function() {
             row = (a - col) / n;
             cell = "#"+row.toString()+col.toString();
             if (lights[a] === 0) {
-                $(cell).css('background-color', inactive_bg)
+                $(cell).css('background-color', active_bg)
                 $(cell).css('color', inactive_fg)
             }
             else {
-                $(cell).css('background-color', active_bg)
+                $(cell).css('background-color', inactive_bg)
                 $(cell).css('color', active_fg)
             }
         }
