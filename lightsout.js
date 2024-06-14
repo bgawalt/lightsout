@@ -60,6 +60,12 @@ $(document).ready(function() {
 
     $(".gamepanel").click(function() {
         counter = counter + 1
+        id = $(this).attr('id');
+        row = parseInt(id[0]);
+        col = parseInt(id[1]);
+        toggle_neighbors(row, col);
+        set_colors();
+        check_if_won();
     })
 
     $("#reset").click(function() {
@@ -68,124 +74,5 @@ $(document).ready(function() {
         game_won = false;
         $("#win_msg").html("Tap to toggle until all lights are out.")
         set_colors();
-    })
-
-    $("#00").click(function() {
-        if (game_won === false) {
-            toggle_neighbors(0, 0);
-            set_colors();
-            check_if_won();
-        }
-    })
-    $("#01").click(function() {
-        if (game_won === false) {
-            toggle_neighbors(0, 1);
-            set_colors();
-            check_if_won();
-        }
-    })
-    $("#02").click(function() {
-        if (game_won === false) {
-            toggle_neighbors(0, 2);
-            set_colors();
-            check_if_won();
-        }
-    })
-    $("#03").click(function() {
-        if (game_won === false) {
-            toggle_neighbors(0, 3);
-            set_colors();
-            check_if_won();
-        }
-    })
-
-
-    $("#10").click(function() {
-        if (game_won === false) {
-            toggle_neighbors(1, 0);
-            set_colors();
-            check_if_won();
-        }
-    })
-    $("#11").click(function() {
-        if (game_won === false) {
-            toggle_neighbors(1, 1);
-            set_colors();
-            check_if_won();
-        }
-    })
-    $("#12").click(function() {
-        if (game_won === false) {
-            toggle_neighbors(1, 2);
-            set_colors();
-            check_if_won();
-        }
-    })
-    $("#13").click(function() {
-        if (game_won === false) {
-            toggle_neighbors(1, 3);
-            set_colors();
-            check_if_won();
-        }
-    })
-
-
-    $("#20").click(function() {
-        if (game_won === false) {
-            toggle_neighbors(2, 0);
-            set_colors();
-            check_if_won();
-        }
-    })
-    $("#21").click(function() {
-        if (game_won === false) {
-            toggle_neighbors(2, 1);
-            set_colors();
-            check_if_won();
-        }
-    })
-    $("#22").click(function() {
-        if (game_won === false) {
-            toggle_neighbors(2, 2);
-            set_colors();
-            check_if_won();
-        }
-    })
-    $("#23").click(function() {
-        if (game_won === false) {
-            toggle_neighbors(2, 3);
-            set_colors();
-            check_if_won();
-        }
-    })
-
-
-    $("#30").click(function() {
-        if (game_won === false) {
-            toggle_neighbors(3, 0);
-            set_colors();
-            check_if_won();
-        }
-    })
-    $("#31").click(function() {
-        if (game_won === false) {
-            toggle_neighbors(3, 1);
-            set_colors();
-            check_if_won();
-        }
-    })
-    $("#32").click(function() {
-        if (game_won === false) {
-            toggle_neighbors(3, 2);
-            set_colors();
-            check_if_won();
-        }
-    })
-    $("#33").click(function() {
-        if (game_won === false) {
-            toggle_neighbors(3, 3);
-            set_colors();
-            check_if_won();
-        }
     })
 })
